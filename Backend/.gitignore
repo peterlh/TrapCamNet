@@ -1,0 +1,19 @@
+# Build folders
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+
+# IDE settings
+.vs/
+.vscode/
+
+# Other
+*.log
+*.db
+*.sqlite
+
+# Secrets
+secrets.json

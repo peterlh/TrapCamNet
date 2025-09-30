@@ -1,0 +1,48 @@
+<script setup>
+import { onBeforeMount } from 'vue'
+import { useColorModes } from '@coreui/vue'
+
+import { useThemeStore } from '@/stores/theme.js'
+import { provideToast } from '@/composables/toast'
+import AppToast from '@/components/AppToast.vue'
+
+const { isColorModeSet, setColorMode } = useColorModes(
+  'coreui-free-vue-admin-template-theme',
+)
+const currentTheme = useThemeStore()
+
+onBeforeMount(() => {
+  const urlParams = new URLSearchParams(window.location.href.split('?')[1])
+  let theme = urlParams.get('theme')
+
+  if (theme !== null && theme.match(/^[A-Za-z0-9\s]+/)) {
+    theme = theme.match(/^[A-Za-z0-9\s]+/)[0]
+  }
+
+  if (theme) {
+    setColorMode(theme)
+    return
+  }
+
+  if (isColorModeSet()) {
+    return
+  }
+
+  setColorMode(currentTheme.theme)
+})
+
+// Provide toast functionality globally
+provideToast()
+</script>
+
+<template>
+  <router-view />
+  <AppToast />
+</template>
+
+<style lang="scss">
+// Import Main styles for this application
+@use 'styles/style';
+// We use those styles to show code examples, you should remove them in your application.
+@use 'styles/examples';
+</style>

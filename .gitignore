@@ -1,0 +1,25 @@
+# Node / Vue.js
+node_modules/
+npm-debug.log
+yarn-error.log
+*.lock
+
+# .NET / C# backend
+bin/
+obj/
+*.user
+*.suo
+*.dll
+*.exe
+*.pdb
+
+# Environment/config
+.env
+.env.local
+.env.*.local
+
+# IDE/editor
+.vscode/
+.idea/
+*.vs/
+
